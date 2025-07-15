@@ -1,0 +1,20 @@
+# Cold Email Sender Dependencies
+# All dependencies are part of Python standard library, so this file is optional
+# but included for completeness and future extensibility
+
+# Core dependencies (built-in to Python 3.6+)
+# smtplib - for SMTP email sending
+# ssl - for secure connections
+# json - for configuration file handling
+# csv - for recipient list import
+# time - for rate limiting
+# random - for randomized delays
+# logging - for comprehensive logging
+# email.mime - for email message creation
+# datetime - for timestamps
+# argparse - for command line argument parsing
+# os - for file operations
+# typing - for type hints
+# sys - for system operations
+
+# No external dependencies required - all modules are part of Python standard library 
