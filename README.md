@@ -2,6 +2,89 @@
 
 A Python script for sending personalized cold emails to multiple recipients with rate limiting, error handling, and logging.
 
+---
+
+## 🚀 Quick Start for Beginners
+
+### 1. Prerequisites
+- **Python 3.6 or newer** must be installed. Check with:
+  ```bash
+  python3 --version
+  ```
+  If you don’t have Python, [download it here](https://www.python.org/downloads/).
+
+### 2. Download the Script
+- Download or clone this repository to your computer:
+  ```bash
+  git clone https://github.com/YOUR-USERNAME/cold-emailer.git
+  cd cold-emailer
+  ```
+  Or just download the ZIP from GitHub and extract it.
+
+### 3. (Optional) Create a Virtual Environment
+- This keeps your Python packages organized:
+  ```bash
+  python3 -m venv venv
+  source venv/bin/activate  # On Windows: venv\Scripts\activate
+  ```
+
+### 4. Create Sample Files
+- Run this command to generate example config and recipient files:
+  ```bash
+  python3 cold_emailer.py --create-samples
+  ```
+  This creates:
+  - `config.json` (your email settings and template)
+  - `recipients.csv` (sample recipient list)
+
+### 5. Edit Your Configuration
+- Open `config.json` in a text editor (like Notepad, VS Code, or TextEdit).
+- Enter your email details and customize the template. Example:
+  ```json
+  {
+    "email": {
+      "smtp_server": "smtp.gmail.com",
+      "smtp_port": 587,
+      "sender_email": "your-email@gmail.com",
+      "sender_password": "your-app-password"
+    },
+    "template": {
+      "subject": "Hi {first_name}, I'd love to connect about {company}",
+      "body": "Hi {first_name},\n\nI hope this email finds you well..."
+    },
+    "rate_limiting": {
+      "min_delay_seconds": 30,
+      "max_delay_seconds": 60,
+      "max_emails_per_hour": 50
+    }
+  }
+  ```
+- **Important:** For Gmail, you need an [App Password](https://support.google.com/accounts/answer/185833?hl=en) (not your regular password).
+
+### 6. Edit Your Recipient List
+- Open `recipients.csv` in a spreadsheet app or text editor.
+- Add your contacts. Example:
+  ```csv
+  email,first_name,last_name,company
+  john.doe@example.com,John,Doe,TechCorp
+  jane.smith@example.com,Jane,Smith,StartupXYZ
+  ```
+
+### 7. Test Everything (Dry Run)
+- Run this command to simulate sending emails (no emails will actually be sent):
+  ```bash
+  python3 cold_emailer.py --dry-run
+  ```
+  Check the output and `cold_emailer.log` for any errors.
+
+### 8. Send Your Emails
+- When you’re ready, run:
+  ```bash
+  python3 cold_emailer.py
+  ```
+
+---
+
 ## Features
 
 - **SMTP Support**: Works with Gmail, Outlook, and custom SMTP servers
@@ -11,64 +94,6 @@ A Python script for sending personalized cold emails to multiple recipients with
 - **Error Handling**: Comprehensive logging and error recovery
 - **Dry Run Mode**: Test your setup without sending actual emails
 - **HTML & Plain Text**: Sends both formats for better deliverability
-
-## Quick Start
-
-### 1. Create Sample Files
-
-```bash
-python cold_emailer.py --create-samples
-```
-
-This creates:
-- `config.json` - Email configuration and template
-- `recipients.csv` - Sample recipient list
-
-### 2. Configure Your Settings
-
-Edit `config.json` with your email credentials:
-
-```json
-{
-  "email": {
-    "smtp_server": "smtp.gmail.com",
-    "smtp_port": 587,
-    "sender_email": "your-email@gmail.com",
-    "sender_password": "your-app-password"
-  },
-  "template": {
-    "subject": "Hi {first_name}, I'd love to connect about {company}",
-    "body": "Hi {first_name},\n\nI hope this email finds you well..."
-  },
-  "rate_limiting": {
-    "min_delay_seconds": 30,
-    "max_delay_seconds": 60,
-    "max_emails_per_hour": 50
-  }
-}
-```
-
-### 3. Prepare Your Recipient List
-
-Edit `recipients.csv` with your target contacts:
-
-```csv
-email,first_name,last_name,company,industry,potential_project,your_name,your_title,your_company,your_phone
-john.doe@example.com,John,Doe,TechCorp,software development,web application development,Jane Smith,Business Development Manager,Innovation Labs,+1-555-0123
-jane.smith@example.com,Jane,Smith,StartupXYZ,e-commerce,digital marketing strategy,Jane Smith,Business Development Manager,Innovation Labs,+1-555-0123
-```
-
-### 4. Test with Dry Run
-
-```bash
-python cold_emailer.py --dry-run
-```
-
-### 5. Send Emails
-
-```bash
-python cold_emailer.py
-```
 
 ## Email Provider Setup
 
